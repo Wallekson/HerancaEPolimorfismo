@@ -32,9 +32,9 @@ public class ImportedProduct extends Product {
     public String priceTag() {
         return getName()
                 + " $ "
-                + String.format("%.2uf", totalPrice())
+                + String.format("%.2f", totalPrice())
                 + " (Customs Fee: $ "
-                + String.format("%.2uf", customsFee)
+                + String.format("%.2f", customsFee)
                 + ")";
     }
 }

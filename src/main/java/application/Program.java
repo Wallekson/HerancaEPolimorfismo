@@ -23,28 +23,26 @@ public class Program {
         int n = sc.nextInt();
 
 
-        for (int i = 1; i < n; i++){
+        for (int i = 1; i <= n; i++){
             System.out.printf("Product #" + i + " data");
-            System.out.print("Common, used or imported (c/u/i)?");
+            System.out.print("Common, used or imported (c/u/i)? ");
             char ch = sc.next().charAt(0);
+            sc.nextLine();
             System.out.print("Name: ");
             String name = sc.nextLine();
-            sc.nextLine();
             System.out.print("Price: ");
-            Double price = sc.nextDouble();
+            double price = sc.nextDouble();
             if (ch == 'c'){
                 list.add(new Product(name,price));
-
             } else
                 if (ch == 'u') {
-                    System.out.print("Manufacture date (DD/MM/YYYY: ");
+                    System.out.print("Manufacture date (DD/MM/YYYY): ");
                     LocalDate date = LocalDate.parse(sc.next(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                     list.add(new UsedProduct(name,price, date));
                 }
                 else{
                     System.out.print("Customs fee: ");
                     double customsFee = sc.nextDouble();
-                    price += customsFee;
                     list.add(new ImportedProduct(name,price,customsFee));
                 }
 

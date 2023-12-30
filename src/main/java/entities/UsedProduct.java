@@ -29,7 +29,7 @@ public class UsedProduct extends Product{
     public String priceTag() {
             return getName()
                     + " (used) $"
-                    + String.format("%.2uf",getPrice())
+                    + String.format("%.2f",getPrice())
                     + " (Manufactured Date: "
                     + manufactureDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
                     + ")";
