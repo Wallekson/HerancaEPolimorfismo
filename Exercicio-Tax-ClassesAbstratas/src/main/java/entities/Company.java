@@ -23,6 +23,6 @@ public class Company extends Tax {
 
     @Override
     public double tax(){
-        return numberEmployees;
+        return getAnnualIncome() * 16 /100;
     }
 }
