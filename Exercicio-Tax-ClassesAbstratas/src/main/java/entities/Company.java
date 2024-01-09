@@ -23,6 +23,11 @@ public class Company extends Tax {
 
     @Override
     public double tax(){
-        return getAnnualIncome() * 16 /100;
+        if(this.numberEmployees < 10){
+            return  getAnnualIncome() * 14 /100;
+        }else {
+             return getAnnualIncome() * 16 /100;
+        }
     }
+
 }

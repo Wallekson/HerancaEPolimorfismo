@@ -31,24 +31,15 @@ public class Program {
             double annualIncome = sc.nextDouble();
             if (ch == 'i'){
                 System.out.print("Health expenditures: ");
-                double healthExpenditures =sc.nextDouble();
-                if (annualIncome < 20000.00){
-                    annualIncome += annualIncome * 15 / 100;
-
-                }else {
-                    annualIncome += annualIncome * 25 / 100;
-                }
-                if (healthExpenditures > 0){
-                    healthExpenditures = healthExpenditures / 2;
-                }
-                double tax = annualIncome + healthExpenditures;
-                list.add(new Individual(name,annualIncome,tax));
+                double healthExpenditures = sc.nextDouble();
+               if (healthExpenditures > 0){
+                   healthExpenditures = healthExpenditures / 2;
+               }
+                list.add(new Individual(name,annualIncome,healthExpenditures));
             }
             if (ch == 'c'){
                 System.out.print("Number of employees: ");
                 int numberEmployees =sc.nextInt();
-                if (numberEmployees > 10){
-                    double tax = annualIncome * 14 /100;
 
                 list.add(new Company(name,annualIncome,numberEmployees));
             }

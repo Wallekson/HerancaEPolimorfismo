@@ -23,7 +23,12 @@ public class Individual extends Tax{
 
     @Override
     public double tax(){
-        return healthExpenditures;
+        if(this.getAnnualIncome() < 20000.00){
+            return  getAnnualIncome() * 15 /100;
+        }else {
+            return getAnnualIncome() * 25 /100;
+        }
+
     }
 
 }
