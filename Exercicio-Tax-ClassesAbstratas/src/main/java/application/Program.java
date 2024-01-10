@@ -2,7 +2,7 @@ package application;
 
 import entities.Company;
 import entities.Individual;
-import entities.Tax;
+import entities.TaxPayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ public class Program {
         Locale.setDefault(Locale.US);
         Scanner sc =new Scanner(System.in);
 
-        List<Tax> list = new ArrayList<>();
+        List<TaxPayer> list = new ArrayList<>();
 
         System.out.print("Enter the number of tax payers: ");
         int n = sc.nextInt();
@@ -25,25 +25,34 @@ public class Program {
             System.out.println("Tax payer #" + i + " data:");
             System.out.print("Individual or company (i/c)? ");
             char ch = sc.next().charAt(0);
+            sc.nextLine();
             System.out.print("Name: ");
             String name = sc.nextLine();
             System.out.print("Annual Income: ");
             double annualIncome = sc.nextDouble();
-            if (ch == 'i'){
+            if (ch == 'i') {
                 System.out.print("Health expenditures: ");
                 double healthExpenditures = sc.nextDouble();
-               if (healthExpenditures > 0){
-                   healthExpenditures = healthExpenditures / 2;
-               }
-                list.add(new Individual(name,annualIncome,healthExpenditures));
+
+                list.add(new Individual(name, annualIncome, healthExpenditures));
             }
-            if (ch == 'c'){
+            else{
                 System.out.print("Number of employees: ");
                 int numberEmployees =sc.nextInt();
-
                 list.add(new Company(name,annualIncome,numberEmployees));
             }
 
         }
+
+        System.out.println();
+        System.out.println("TAXES PAID:");
+        double soma = 0;
+        for (TaxPayer taxPayer: list) {
+            System.out.printf(taxPayer.getName() + ": $ %.2f%n", taxPayer.tax());
+            soma += taxPayer.tax();
+        }
+        System.out.println();
+        System.out.printf("TOTAL TAXES: $ %.2f",soma);
+
     }
 }

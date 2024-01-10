@@ -1,6 +1,6 @@
 package entities;
 
-public class Individual extends Tax{
+public class Individual extends TaxPayer {
 
     private Double healthExpenditures;
 
@@ -22,13 +22,18 @@ public class Individual extends Tax{
     }
 
     @Override
-    public double tax(){
-        if(this.getAnnualIncome() < 20000.00){
-            return  getAnnualIncome() * 15 /100;
-        }else {
-            return getAnnualIncome() * 25 /100;
+    public double tax() {
+        double basicTax;
+        if (getAnnualIncome() < 20000.0) {
+            basicTax = getAnnualIncome() * 0.15;
+        } else {
+            basicTax = getAnnualIncome() * 0.25;
         }
-
+        basicTax -= getHealthExpenditures() * 0.5;
+        if (basicTax < 0.0){
+            basicTax = 0.0;
+        }
+        return basicTax;
     }
 
 }
